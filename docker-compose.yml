@@ -1,0 +1,21 @@
+networks:
+  web:
+    driver: bridge
+
+services:
+  nestjs:
+    build:
+      context: "./nestjs"
+      dockerfile: Dockerfile
+    ports:
+      - "8081:3000"
+    networks:
+      - web
+  nextjs:
+    build:
+      context: "./nextjs"
+      dockerfile: Dockerfile
+    ports:
+      - "8080:3000"
+    networks:
+      - web
