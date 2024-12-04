@@ -1,0 +1,49 @@
+.headerCss {
+    background-image: url('../../static/DSC_0366.JPG');
+    height: 100vh;
+    min-height: 40em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+    clear: both;
+    background-attachment: fixed;
+    display: block;
+}
+
+.titleCss {
+    position: absolute;
+    top: 22em;
+    left: 40%;
+    transform: translateX(-50%) translateY(-50%);
+    font-family: Gravity-Regular;
+}
+
+.h1Css {
+    letter-spacing: 20px;
+    font-size: 4em;
+}
+
+.pCss {
+    font-size: 1.7em;
+}
+
+
+@media only screen and (max-width: 1050px) {
+    .titleCss {
+        position: absolute;
+        top: 18em;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        font-family: Gravity-Regular;
+    }
+    
+    .h1Css {
+        letter-spacing: 20px;
+        font-size: 2.3em;
+    }
+    
+    .pCss {
+        font-size: 1.3em;
+    }
+}

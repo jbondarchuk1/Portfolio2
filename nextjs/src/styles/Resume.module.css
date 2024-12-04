@@ -1,0 +1,47 @@
+.resume{
+    height: 76em;
+    width: 100%;
+    background-color: #444;
+    display: block;
+    min-height: 90vh;
+}
+
+.resumeWrapper{
+    width: 100%;
+    display: block;
+    justify-content: center;
+}
+
+.iframeWrapper{
+    width: 100%;
+    display: block;
+    padding-top: 3em;
+    margin-bottom: 5em;
+    margin: auto;
+}
+
+.iframeWrapper h1{
+    font-size: 3em;
+    text-align: center;
+    width: auto;
+    display: block;
+    margin:  auto;
+    color: white;
+    margin-bottom: 1em;
+}
+
+.resume iframe{
+    display: block;
+    margin-top: 2em;
+    margin: auto;
+}
+
+@media only screen and (max-width: 680px) {
+    .resume iframe {
+      width: 320px;
+      height: 410px;
+    }
+    .resume{
+        height: 48em;
+    }
+  }
