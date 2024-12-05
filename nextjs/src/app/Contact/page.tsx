@@ -1,12 +1,7 @@
 "use client";
 
-const apiURL = 'http://localhost:8081';
-
-
+import {apiURL} from '../../modules/GlobalClientData';
 import axios from 'axios';
-import {
-  useState
-} from "react"
 import {
   toast
 } from "sonner"
@@ -18,9 +13,6 @@ import {
   zodResolver
 } from "@hookform/resolvers/zod"
 import * as z from "zod"
-import {
-  cn
-} from "@/lib/utils"
 import {
   Button
 } from "@/components/ui/button"
@@ -40,7 +32,6 @@ import {
   Textarea
 } from "@/components/ui/textarea"
 import Link from 'next/link';
-import { get } from 'http';
 import Title from '../../components/Title/Title';
 
 const formSchema = z.object({
@@ -55,7 +46,6 @@ const formSchema = z.object({
 
 
 export default function MyForm() {
-
   const form = useForm < z.infer < typeof formSchema >> ({
     resolver: zodResolver(formSchema),
   })
@@ -63,7 +53,7 @@ export default function MyForm() {
   function onSubmit(values: z.infer < typeof formSchema >) {
     try {
       console.log("trying request");
-      axios.get(apiURL) // JSON.stringify(values))
+      axios.post(apiURL, values)
         .then((res) => toast.success("Congrats! Email sent!"))
         .catch((err) => toast.error("Error sending to API... " + err))
       form.reset({ name: "", email: "", subject: "", body: "" });

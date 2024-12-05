@@ -11,13 +11,13 @@ services:
       - "8081:3000"
     networks:
       - web
-  # nextjs:
-  #   build:
-  #     context: "./nextjs"
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "8080:3000"
-  #   networks:
-  #     - web
-  #   depends_on:
-  #     - nestjs
+  nextjs:
+    build:
+      context: "./nextjs"
+      dockerfile: Dockerfile
+    ports:
+      - "8080:3000"
+    networks:
+      - web
+    depends_on:
+      - nestjs

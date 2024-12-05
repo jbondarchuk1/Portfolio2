@@ -29,7 +29,7 @@ function Home() {
             <p id={mainStyles.body1} className=" text-justify">
               I am a software engineer from Long Island and MS in Computer Science at Johns Hopkins University. 
               <br/><br/>I have professional software engineering experience in full-stack development, cloud computing and devops.
-              <br/><br/>I have academic background in everything from Data Structures and Algorithms, Machine Learning, DevSecOps, Distributed Systems, Object Oriented Analysis and Design, and Software Engineering.
+              <br/><br/>I have academic background in everything from Data Structures and Algorithms, Machine Learning, DevSecOps, Cloud Computing, Data Engineering (ETL, Map-Reduce, Data Streaming), Object Oriented Analysis and Design, and Software Engineering.
             </p>
           </div>
         </div>

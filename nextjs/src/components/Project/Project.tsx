@@ -17,10 +17,10 @@ class ProjectData{
     public headline:string = "";
     public description:string = "";
     public language:string = "";
-    public projectLink:Url|null = "";
-    public repoLink:Url = "";
+    public projectLink:string|null = "";
+    public repoLink:string = "";
 
-    constructor(image:any, headline:string, language:string, description:string, projectLink:Url|null, repoLink:Url){
+    constructor(image:any, headline:string, language:string, description:string, projectLink:string|null, repoLink:string){
         this.image = image;
         this.headline = headline;
         this.description= description;
@@ -32,10 +32,11 @@ class ProjectData{
     public RenderProject() {
         const data:ProjectData = this;
         const getLink = () => {
+            console.log(data.projectLink);
             if (data.projectLink === null){
                 return
             }else {
-                return <Button className='rounded-xl shadow-xl bg-zinc-600 hover:bg-zinc-700' variant="default"> <Link className='inline-block w-full m-auto' href={data.projectLink}>Project</Link></Button>
+                return <Button className='rounded-xl shadow-xl bg-zinc-600 hover:bg-zinc-700' variant="default"> <Link className='inline-block w-full m-auto' href={new URL(data.projectLink)}>Project</Link></Button>
             }
         }
         return (

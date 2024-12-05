@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import styles from '../../styles/Projects.module.css';
@@ -8,73 +10,88 @@ import WebScraper from '../../../static/gifs/KanshudoScraper.gif'
 import UnityGameGIF from '../../../static/gifs/Game.gif'
 import GFDiscordGIF from '../../../static/gifs/Bot.gif'
 import Title from '../../components/Title/Title';
+import {apiURL} from '../../modules/GlobalClientData';
+import { Skeleton } from "@/components/ui/skeleton"
+import { StaticImageData } from 'next/image';
 
-/* template for data-reference later for index number
-  tool: [
-  "gif here",
-  "name here",
-  "language here",
-  "sentence here", 
-  ["link to project here or null", "is external (bool) or null"], 
-  "link to code here"
-  ],
-*/
 
-const projectData = {
+const localgifs = [
+  {key:'Unity', val:UnityGameGIF}, 
+  {key:'Scraper', val:WebScraper}, 
+  {key:'Assembler', val:Assembler}, 
+  {key:'Spaced Repetition', val:SRSProgram}, 
+  {key:'Discord', val:GFDiscordGIF}, 
+]
 
-  unityGame: new ProjectData(
-    UnityGameGIF,
-    "3D Game Made in Unity",
-    "C#, Blender, Unity",
-    "My in-progress hobby project based on my imagination and Metal Gear Solid. Written in C#, I developed the AI using Finite State Machines, art with blender, and many other features. I understand 3D vector math and raycasting among many other game development skills. Please enter the password-> helloworld to view and download the executable build from itch.io.",
-    "https://jbondarchuk.itch.io/momos-nightmare",
-    "https://github.com/jbondarchuk1/MomoNightmare"),
-
-  girlFriendDiscordBot: new ProjectData(
-    GFDiscordGIF,
-    "Alexa Compatible Discord Bot",
-    "Nodejs",
-    "My girlfriend moved further away and to keep her company I designed a discord bot. It keeps track of the number of days until our next flight, runs Cron job reminders, has data saved and loaded from json, and has an Alexa command that wakes my Alexa and has Alexa say \"Girlfriend needs attention!\", followed by a push notification.",
-    null,
-    "https://github.com/jbondarchuk1/JCLoveyDovey"),
-  srsTool: new ProjectData(
-    SRSProgram,
-    "Japanese Spaced Repetition Web Application",
-    "C#/ASP.NET MVC",
-    "Full-featured full-stack system with login, authentication, email verification and authorization. Renders tabular vocabulary data to the client on specified dates as per the spaced repetition algorithm.", 
-    null, // for now null, but make sure to link this when we host this project; change to ["https://url.com", true]
-    "https://github.com/jbondarchuk1/SRSProgramMultiplayerTrial"),
-  webScraper: new ProjectData(
-    WebScraper,
-    "Kanshudo Web Scraper",
-    "Python",
-    "Scrapes the user’s currently saved favorites list on Kanshudo (bank of Japanese vocabulary) and inputs them to a spreadsheet via the google sheets API.",
-    null,
-    "https://github.com/jbondarchuk1/KanshudoScraper"),
-  assembler: new ProjectData(
-    Assembler,
-    "Assembler",
-    "Python",
-    "Acts as an assembler/parser for bits feeding through a Hack computer CPU. Input: asm assembly language file, output: hack machine language/16 bit binary file.",
-    null,
-    "https://github.com/jbondarchuk1/Assembler-Project"),
+function getImage(title:string):StaticImageData | null{
+  let val = null;
+  localgifs.forEach(x => {
+    if (title.includes(x.key))
+      val = x.val
+  })
+  return val;
 }
 
 function Projects() {
+  const [res, setRes] = useState<ProjectData[]>([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const result = (await fetch(apiURL + "/projects"));
+      const data = await result.json();
+      let projectDataArr: ProjectData[] = [];
+      
+      data.forEach((x:any) => {
+        let obj = new ProjectData(
+          getImage(x.headline),
+          x.headline,
+          x.language,
+          x.description,
+          x.projectLink,          
+          x.repoLink,          
+        );
+
+        projectDataArr.push(obj);
+      });
+
+      setRes(projectDataArr);
+
+    }
+
+    fetchData();
+  }, []);
+
+  if (res.length===0){
     return (
       <div className={styles.projects}>
-      <Title title='PROJECTS'></Title>
-        <ul className={styles.ul}>
-        {
-          Object.entries(projectData).map( project => {
-            return(
-              project[1].RenderProject()
-          )})
-        }
-        </ul>
+        <Title title='PROJECTS'></Title>
+        <div className="flex flex-col space-y-3 justify-center align-middle m-28 pl-8">
+          <Skeleton className="h-56 w-4/5 rounded-xl bg-zinc-600" />
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-[250px] rounded-xl bg-zinc-600" />
+            <Skeleton className="h-4 w-[200px] rounded-xl bg-zinc-600" />
+          </div>
+        </div>
       </div>
     );
   }
+  else return (
+    <div className={styles.projects}>
+    <Title title='PROJECTS'></Title>
+      <ul className={styles.ul}>
+      {
+        res.map((project) => {
+          try{
+            return project.RenderProject();
+          }catch(err) {
+            console.log(project, err);
+          }
+        })
+      }
+      </ul>
+    </div>
+  );
+}
   
   export default Projects;
   

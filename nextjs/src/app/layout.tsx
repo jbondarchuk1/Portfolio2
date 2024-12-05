@@ -4,6 +4,8 @@ import "./styles/globals.css";
 import AllNavigation from "@/components/Nav/AllNavigation";
 import Footer from "@/components/Foot/Footer";
 import toast, { Toaster } from 'sonner';
+import Link from 'next/link';
+import Head from "next/document";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,6 +30,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+        <head>
+          <title>Jason Bondarchuk</title>
+          <link rel='icon' href='/favicon.ico'></link>
+        </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <AllNavigation></AllNavigation>
         {children}
