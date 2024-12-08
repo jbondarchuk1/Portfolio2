@@ -15,5 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker images
-      run: cd nestjs
-      run: npm test
+      run: 
+        cd nestjs
+        npm test
