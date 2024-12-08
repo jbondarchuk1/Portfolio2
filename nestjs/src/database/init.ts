@@ -5,7 +5,7 @@ import getPortfolioContext from "./context";
 
 
 export default function InitializeSQLite(){
-  console.log("hi mom im pushing a change");
+  console.log("hi mom im pushing a change  asdfasdf");
   let db = getPortfolioContext();
       
       // Drop the table if it exists
