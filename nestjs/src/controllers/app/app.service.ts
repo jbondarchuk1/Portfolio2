@@ -1,12 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import getPortfolioContext from 'src/database/context';
+import getPortfolioContext from '../../../src/database/context';
 
 @Injectable()
 export class AppService {
   getHello(): string {
-    return JSON.stringify({
-      data: "hello world",
-    });
+    return "hello world"
   }
 
   public getProjects(): Promise<string[]>{
