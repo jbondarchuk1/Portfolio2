@@ -1,7 +1,6 @@
 import ProjectData, { projectData } from "src/models/project/projectData";
 import getPortfolioContext from "./context";
 
-
 export default function InitializeSQLite(){
       let db = getPortfolioContext();
       

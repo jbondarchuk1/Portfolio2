@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import YouTube from 'react-youtube';
 import Link from 'next/link';
 import styles from '../../styles/Projects.module.css';
 import ProjectData from '../../components/Project/Project';
@@ -16,11 +17,11 @@ import { StaticImageData } from 'next/image';
 
 
 const localgifs = [
-  {key:'Unity', val:UnityGameGIF}, 
-  {key:'Scraper', val:WebScraper}, 
-  {key:'Assembler', val:Assembler}, 
-  {key:'Spaced Repetition', val:SRSProgram}, 
-  {key:'Discord', val:GFDiscordGIF}, 
+  {key:'Unity', val:UnityGameGIF, link:null}, 
+  {key:'Scraper', val:WebScraper, link:null}, 
+  {key:'Assembler', val:Assembler, link:null}, 
+  {key:'Spaced Repetition', val:SRSProgram, link:null}, 
+  {key:'Discord', val:GFDiscordGIF, link:'-VdSZxfV20c'}, 
 ]
 
 function getImage(title:string):StaticImageData | null{
@@ -31,6 +32,16 @@ function getImage(title:string):StaticImageData | null{
   })
   return val;
 }
+
+function getVideo(title:string):string | null{
+  let link = null;
+  localgifs.forEach(x => {
+    if (title.includes(x.key))
+      link = x.link
+  })
+  return link;
+}
+
 
 function Projects() {
   const [res, setRes] = useState<ProjectData[]>([]);
@@ -48,7 +59,8 @@ function Projects() {
           x.language,
           x.description,
           x.projectLink,          
-          x.repoLink,          
+          x.repoLink,
+          getVideo(x.headline)         
         );
 
         projectDataArr.push(obj);
@@ -60,6 +72,9 @@ function Projects() {
 
     fetchData();
   }, []);
+
+
+
 
   if (res.length===0){
     return (
