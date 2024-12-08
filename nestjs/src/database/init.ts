@@ -3,8 +3,10 @@ import getPortfolioContext from "./context";
 
 //build
 
+
 export default function InitializeSQLite(){
-      let db = getPortfolioContext();
+  console.log("hi mom");
+  let db = getPortfolioContext();
       
       // Drop the table if it exists
       db.run(`DROP TABLE IF EXISTS projects;`, (err) => {
