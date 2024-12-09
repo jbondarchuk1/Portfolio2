@@ -1,4 +1,8 @@
 
+/**
+ * ProjectData is analagous to the ProjectData class in the NextJS project.
+ * The projectLink property is optional.
+ */
 export default class ProjectData{
     public headline:string = "";
     public language:string = "";
@@ -15,7 +19,10 @@ export default class ProjectData{
     }
 }
 
-
+// the following is a hard-coded list of projects.
+// why include a database if these are hard-coded? I feel it is important to show the separation of a 3 tier architecture
+// This project would then be scalable so long as I migrate to a 
+// different database and break the 2 projects into separate servers with load balancing/auto-scaling
 export const projectData = {
     unityGame: new ProjectData(
       "3D Game Made in Unity",

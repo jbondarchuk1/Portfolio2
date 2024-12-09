@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import getPortfolioContext from '../../../src/database/context';
+import getPortfolioContext from '../../database/context'
 
 @Injectable()
 export class AppService {
