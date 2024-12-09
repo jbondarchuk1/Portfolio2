@@ -11,7 +11,7 @@ import WebScraper from '../../../static/gifs/KanshudoScraper.gif'
 import UnityGameGIF from '../../../static/gifs/Game.gif'
 import GFDiscordGIF from '../../../static/gifs/Bot.gif'
 import Title from '../../components/Title/Title';
-import {apiURL} from '../../modules/GlobalClientData';
+import {apiURL, headers} from '../../modules/GlobalClientData';
 import { Skeleton } from "@/components/ui/skeleton"
 import { StaticImageData } from 'next/image';
 
@@ -48,8 +48,10 @@ function Projects() {
 
   useEffect(() => {
     async function fetchData() {
-      const result = (await fetch(apiURL + "/projects"));
+      console.log("FETCHING");
+      const result = (await fetch(apiURL + "/projects", {headers:headers}));
       const data = await result.json();
+
       let projectDataArr: ProjectData[] = [];
       
       data.forEach((x:any) => {
