@@ -65,8 +65,4 @@ export default function InitializeSQLite() {
     });
   });
 
-
-
-
-
 }
