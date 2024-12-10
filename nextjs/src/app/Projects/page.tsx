@@ -17,11 +17,13 @@ import { StaticImageData } from 'next/image';
 
 
 const localgifs = [
-  {key:'Unity', val:UnityGameGIF, link:null}, 
+  {key:'Unity', val:UnityGameGIF, link:"_J1CinOQ_Eo"}, 
+  {key:'Microservices', val:UnityGameGIF, link:"V8oaUuuZ1OU"}, 
+  {key:'Neural', link:"HJXHXMfGAOs"},
   {key:'Scraper', val:WebScraper, link:null}, 
   {key:'Assembler', val:Assembler, link:null}, 
   {key:'Spaced Repetition', val:SRSProgram, link:null}, 
-  {key:'Discord', val:GFDiscordGIF, link:'-VdSZxfV20c'}, 
+  {key:'Discord', val:GFDiscordGIF, link:null}, 
 ]
 
 function getImage(title:string):StaticImageData | null{
