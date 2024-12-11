@@ -9,6 +9,7 @@
     clear: both;
     background-attachment: fixed;
     display: block;
+    overflow: hidden;
 }
 
 .titleCss {
@@ -45,5 +46,25 @@
     
     .pCss {
         font-size: 1.3em;
+    }
+}
+
+
+@media only screen and (max-width: 750px) {
+    .titleCss {
+        position: absolute;
+        top: 18em;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        font-family: Gravity-Regular;
+    }
+    
+    .h1Css {
+        letter-spacing: 10px;
+        font-size: 2em;
+    }
+    
+    .pCss {
+        font-size: 1em;
     }
 }
