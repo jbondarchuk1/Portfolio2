@@ -9,8 +9,10 @@ export default class ProjectData{
     public description:string = "";
     public repoLink:string = "";
     public projectLink:string | null = "";
+    public id:number = 0;
 
-    constructor(headline:string, language:string, description:string, repoLink:string,projectLink:string){
+    constructor(id:number,headline:string, language:string, description:string, repoLink:string,projectLink:string){
+        this.id=id;  
         this.headline=headline;
         this.language=language;
         this.description=description;
@@ -25,13 +27,15 @@ export default class ProjectData{
 // different database and break the 2 projects into separate servers with load balancing/auto-scaling
 export const projectData = {
   portfolio: new ProjectData(
-    "Full-Stack Microservices Portfolio with (DevOps and Cloud Infrastructure)",
+    1,
+    "Full-Stack Microservices Portfolio (with DevOps and Cloud Infrastructure)",
     "NextJS (Tailwind/ShadCN), NestJS (NodeJS and Jest), Docker, Low Level Cloud Infrastructure",
     "The site you are on right now is developed as a full-stack 3 tier end to end project with CI/CD. Please have a look around and watch the video for more information.",
     "https://app.jasonbondarchuk.tech",
     "https://github.com/jbondarchuk1/Portfolio2"),
 
     unityGame: new ProjectData(
+      2,
       "3D Game Made in Unity",
       "C#, Blender, Unity",
       "My in-progress hobby project based on my imagination and Metal Gear Solid. Written in C#, I developed the AI using Finite State Machines and Behavior Trees, art with blender, and many other features. I understand 3D vector math and raycasting among many other game development skills. Please enter the password-> helloworld to view and download the (outdated) executable build from itch.io.",
@@ -39,6 +43,7 @@ export const projectData = {
       "https://github.com/jbondarchuk1/MomoNightmare"),
   
     girlFriendDiscordBot: new ProjectData(
+      3,
       "Alexa Compatible Discord Bot",
       "Nodejs",
       "My girlfriend moved further away and to keep her company I designed a discord bot. It keeps track of the number of days until our next flight, runs Cron job reminders, has data saved and loaded from json, and has an Alexa command that wakes my Alexa and has Alexa say \"Girlfriend needs attention!\", followed by a push notification.",
@@ -46,6 +51,7 @@ export const projectData = {
       "https://github.com/jbondarchuk1/JCLoveyDovey"),
 
     neuralNet: new ProjectData(
+      4,
       "Neural Network From Scratch",
       "C#",
       "This was a graduate school course project for Principles of Machine Learning. The project was to implement several neural networks from scratch, from single layer perceptrons, multilayer, and a multilayer network with an auto-encoder.",
@@ -53,6 +59,7 @@ export const projectData = {
       "https://github.com/jbondarchuk1/Intro-to-Machine-Learning"),
 
     webScraper: new ProjectData(
+      5,
       "Kanshudo Web Scraper",
       "Python",
       "Scrapes the user’s currently saved favorites list on Kanshudo (bank of Japanese vocabulary) and inputs them to a spreadsheet via the google sheets API.",

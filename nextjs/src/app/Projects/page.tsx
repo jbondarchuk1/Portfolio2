@@ -1,8 +1,6 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import YouTube from 'react-youtube';
-import Link from 'next/link';
 import styles from '../../styles/Projects.module.css';
 import ProjectData from '../../components/Project/Project';
 import SRSProgram from '../../../static/gifs/SRSProgram.gif'
@@ -53,10 +51,11 @@ function Projects() {
       console.log("FETCHING");
       const result = (await fetch(apiURL + "/projects", {headers:headers}));
       const data = await result.json();
-
-      let projectDataArr: ProjectData[] = [];
       
-      data.forEach((x:any) => {
+      let projectDataArr: ProjectData[] = new Array(data.length);
+      
+      for (let i = 0; i < data.length; i++){
+        const x = data[i];
         let obj = new ProjectData(
           getImage(x.headline),
           x.headline,
@@ -66,9 +65,9 @@ function Projects() {
           x.repoLink,
           getVideo(x.headline)         
         );
-
-        projectDataArr.push(obj);
-      });
+        projectDataArr[x.id - 1] = obj;
+        console.log("headline is " + x.headline + x.id);
+      }
 
       setRes(projectDataArr);
 

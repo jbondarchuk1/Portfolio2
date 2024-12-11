@@ -11,7 +11,6 @@ export class AppService {
     let db = getPortfolioContext();
     
     return new Promise((resolve, reject) => {
-      let r:string[] = [];
       db.all("SELECT * FROM projects;", [], (err, rows) => {
         if (err) reject(err);
         else{
