@@ -47,7 +47,7 @@ function Home() {
         </div>
         <div className={mainStyles.Main}>
           <div className={mainStyles.section}>
-            <p id={mainStyles.mainHeader}>EMPLOYMENT NOTE</p>
+            <p id={mainStyles.mainHeader}>OTHER INFO</p>
             <p id={mainStyles.body1} className=" text-justify">
               <br/>I am located in New York State but willing to relocate.
               <br/><br/>I am open to remote, hybrid and in-person positions.
