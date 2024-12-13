@@ -9,7 +9,7 @@ require('dotenv').config();
  * It controls the API for getting projects and sending emails.
  * It also has a Hello World endpoint for testing purposes.
  */
-@Controller()
+@Controller("/api")
 export class AppController {
   constructor(private readonly appService: AppService) { }
 
