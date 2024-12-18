@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.css';
 import mainStyles from '../styles/Main.module.css';
 import Icons from '../components/IconContainer/Icons';
 import Link from 'next/link';
+import {Reveal} from '../components/Text/Reveal';
 
 
 const classForHeader = [
@@ -15,7 +16,11 @@ function Home() {
       <div>
           <div className={styles.headerCss}>
             <div className={classForHeader[0][0]}>
-              <h1 className={classForHeader[0][1]}>JASON BONDARCHUK</h1><br/><br /> <br />
+              <div className={classForHeader[0][1]}>
+                <Reveal text="JASON " size=""></Reveal>
+                <Reveal text="BONDARCHUK" size=""></Reveal>
+              </div>
+              {/* <h1 className={classForHeader[0][1]}>JASON BONDARCHUK</h1><br/><br /> <br /> */}
               <p className={classForHeader[0][2]}>
                   Software Engineer from New York <br />and Master of Science in Computer Science at Johns Hopkins University.<br />
               </p>
@@ -25,7 +30,9 @@ function Home() {
 
         <div className={mainStyles.Main}>
           <div className={mainStyles.section}>
-            <p id={mainStyles.mainHeader}>ABOUT ME</p>
+            <div className="p-1 mb-12 mt-6">
+              <Reveal text="ABOUT ME" size=" text-5xl"></Reveal>
+            </div>
             <p id={mainStyles.body1} className=" text-justify">
               I am a software engineer from Long Island and MS in Computer Science at Johns Hopkins University. 
               <br/><br/>I have professional software engineering experience in full-stack development, cloud computing and devops.
@@ -35,7 +42,9 @@ function Home() {
         </div>
         <div className={" bg-slate-300"}>
           <div className={mainStyles.section}>
-            <p id={mainStyles.mainHeader} className='text-center'>PORTFOLIO GUIDE</p>
+          <div className="p-1 mb-12 mt-6">
+              <Reveal text="PORTFOLIO GUIDE" size="text-5xl text-gray-800"></Reveal>
+            </div>
             <p id={mainStyles.body1} className=" text-justify">
               <br/><br/>For a look at a few of my personal projects, please visit the <Link href='/Projects' className='underline hover:text-blue-400'>'Projects'</Link> tab. These are non-exhaustive and do not include confidential projects from previous employment.
 
@@ -46,9 +55,11 @@ function Home() {
           </div>
         </div>
         <div className={mainStyles.Main}>
-          <div className={mainStyles.section}>
-            <p id={mainStyles.mainHeader}>OTHER INFO</p>
-            <p id={mainStyles.body1} className=" text-justify">
+          <div className={mainStyles.section + " flex items-center justify-center flex-col text-center"}>
+            <div className="p-1 mb-12 mt-6">
+              <Reveal text="OTHER INFO" size="text-5xl"></Reveal>
+            </div>
+            <p id={mainStyles.body1} >
               <br/>I am located in New York State but willing to relocate.
               <br/><br/>I am open to remote, hybrid and in-person positions.
               <br/><br/>I am a US citizen, able to receive security clearance <strong><em>after</em></strong> employment if necessary.
